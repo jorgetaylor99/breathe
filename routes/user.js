@@ -1,0 +1,62 @@
+require('dotenv').config();
+const { Router } = require('express');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const router = Router();
+
+// destructure env variables with defaults
+const { SECRET = "secret" } = process.env;
+
+router.get('/', function(req, res) {
+  res.render('index');
+});
+
+router.get('/register', function(req, res) {
+  res.render('register');
+});
+
+router.post('/register', async (req, res) => {
+  try {
+    // hash the password
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+    // create a new user
+    await User.create(req.body);
+    // redirect to the login page
+    res.redirect('/login');
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
+
+router.get('/login', function(req, res) {
+  res.render('login');
+});
+
+// Login route to verify a user and get a token
+router.post("/login", async (req, res) => {
+  try {
+    // check if the user exists
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      //check if password matches
+      const result = await bcrypt.compare(req.body.password, user.password);
+      if (result) {
+        // sign token and send it in response
+        const token = await jwt.sign({ email: user.email }, SECRET);
+        // store token in cookie
+        res.cookie('authToken', token, { httpOnly: true });
+        // redirect to home page
+        res.redirect('/home');
+      } else {
+        res.status(400).json({ error: "password doesn't match" });
+      }
+    } else {
+      res.status(400).json({ error: "User doesn't exist" });
+    }
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
+
+module.exports = router;
