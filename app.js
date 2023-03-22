@@ -6,8 +6,11 @@ const cookieParser = require('cookie-parser');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var UserRouter = require('./routes/User');
-var LogRouter = require('./routes/Log');
+var indexRouter = require('./routes/index');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
+var homeRouter = require('./routes/home');
+var addRouter = require('./routes/add');
 
 // Create application object
 var app = express();
@@ -25,7 +28,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
-app.use('/', UserRouter);
-app.use('/home', LogRouter);
+app.use('/', indexRouter);
+app.use('/', loginRouter);
+app.use('/', registerRouter);
+app.use('/', homeRouter);
+app.use('/', addRouter);
 
 module.exports = app;
