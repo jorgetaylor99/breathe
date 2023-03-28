@@ -3,6 +3,14 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* Media query for desktop and tablet devices */
+@media screen and (min-width: 640px) {
+  body {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
+}
+
 a {
   color: #00B7FF;
 }

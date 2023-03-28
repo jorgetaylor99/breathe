@@ -10,7 +10,9 @@
       <ul class="list-group">
         <% logs.forEach(log => { %>
           <li class="list-group-item">
+            Timestamp: <%= formatDate(new Date(log.timestamp)) %><br>
             Peak Flow: <%= log.peakflow %><br>
+            Symptoms: <%= log.symptoms %><br>
             Notes: <%= log.notes %><br>
           </li>
         <% }); %>

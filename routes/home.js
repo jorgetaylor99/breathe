@@ -1,5 +1,6 @@
 const { Router } = require("express"); // import Router from express
 const { isLoggedIn } = require("../public/javascripts/auth"); // import isLoggedIn custom middleware
+const { formatDate } = require("../public/javascripts/timestamp-format"); // import isLoggedIn custom middleware
 const User = require('../models/User');
 
 const router = Router();
@@ -7,7 +8,7 @@ const router = Router();
 router.get('/home', isLoggedIn, async (req, res) => {
   const userId = req.user.id;
   const user = await User.findById(userId); // Fetch the user
-  res.render('home', { logs: user.logs }); // Pass the logs to the view
+  res.render('home', { logs: user.logs, formatDate }); // Pass the logs to the view
 });
 
 module.exports = router

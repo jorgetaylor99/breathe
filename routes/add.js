@@ -9,7 +9,7 @@ router.get('/add', isLoggedIn, async (req, res) => {
 
 router.post('/add', isLoggedIn, async (req, res) => {
   try {
-    const { peakflow, notes } = req.body;
+    const { peakflow, symptoms, notes } = req.body;
     const userId = req.user.id; // Get the user's ID from the isLoggedIn middleware
 
     // Update the user's logs with the new log data
@@ -19,7 +19,9 @@ router.post('/add', isLoggedIn, async (req, res) => {
         $push: {
           logs: {
             peakflow,
+            symptoms,
             notes,
+            timestamp: new Date()
           },
         },
       },

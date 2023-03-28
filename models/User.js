@@ -6,7 +6,9 @@ const UserSchema = new Schema({
     logs: [
         {
             peakflow: { type: Number, required: false },
-            notes: { type: String, required: false }
+            symptoms: { type: String, required: false },
+            notes: { type: String, required: false },
+            timestamp: { type: Date, default: Date.now }
         }
     ]
 });
