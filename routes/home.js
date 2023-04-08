@@ -1,17 +1,22 @@
-const { Router } = require("express"); // import Router from express
-const { isLoggedIn } = require("../public/javascripts/auth"); // import isLoggedIn custom middleware
-const { formatDate } = require("../public/javascripts/timestamp-format"); // import isLoggedIn custom middleware
+const { Router } = require("express");
+const { isLoggedIn } = require("../public/javascripts/auth");
+const { formatDate } = require("../public/javascripts/format-date");
 const User = require('../models/User');
 
 const router = Router();
 
 router.get('/home', isLoggedIn, async (req, res) => {
-  const userId = req.user.id;
-  const user = await User.findById(userId); // Fetch the user
-  res.render('home', { logs: user.logs, formatDate }); // Pass the logs to the view
+  try {
+    const user = await User.findOne({ _id: req.user.id });
+    const logs = user && user.logs ? user.logs : [];
+    res.render('home', { logs, formatDate });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
 });
 
-module.exports = router
+module.exports = router;
 
 // // Show Route with isLoggedIn middleware
 // router.get("/:id", isLoggedIn, async (req, res) => {

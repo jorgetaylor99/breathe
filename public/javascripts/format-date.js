@@ -1,4 +1,3 @@
-// helpers.js
 function formatDate(date) {
   const formatter = new Intl.DateTimeFormat('en', {
     year: 'numeric',
@@ -6,7 +5,6 @@ function formatDate(date) {
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit',
   });
   return formatter.format(date);
 }

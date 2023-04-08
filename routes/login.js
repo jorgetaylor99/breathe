@@ -8,7 +8,7 @@ const router = Router();
 // destructure env variables with defaults
 const { SECRET = "secret" } = process.env;
 
-router.get('/login', function(req, res) {
+router.get('/login', (req, res) => {
     res.render('login');
 });
 
