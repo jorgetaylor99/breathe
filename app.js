@@ -13,6 +13,7 @@ var homeRouter = require('./routes/home');
 var addRouter = require('./routes/add');
 var resourcesRouter = require('./routes/resources');
 var signoutRouter = require('./routes/signout');
+var logRouter = require('./routes/log');
 
 // Create application object
 var app = express();
@@ -39,5 +40,6 @@ app.use('/', homeRouter);
 app.use('/', addRouter);
 app.use('/', resourcesRouter);
 app.use('/', signoutRouter);
+app.use('/', logRouter);
 
 module.exports = app;
