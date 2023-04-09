@@ -9,7 +9,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-8 mb-5">
+        <div class="col-md-8">
           <h1 class="mt-3 mb-3 display-4">List of logs</h1>
           <p>
             Asthma is a chronic respiratory condition affecting millions of people worldwide, characterized by inflammation and constriction
@@ -22,7 +22,7 @@
           </p>
           <canvas id="chart" data-logs="<%- encodeURIComponent(JSON.stringify(logs)) %>"></canvas>
         </div>
-        <div class="col-md-4 mt-5">
+        <div class="col-md-4 mt-4">
           <div class="d-flex flex-column flex-md-row align-items-center">
             <div class="list-group scroller">
               <% logs.forEach(log => { %>

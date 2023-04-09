@@ -3,7 +3,7 @@ const router = Router();
 
 router.get('/signout', (req, res) => {
   res.clearCookie('authToken');
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 module.exports = router;
