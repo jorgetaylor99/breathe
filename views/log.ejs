@@ -4,46 +4,73 @@
   <body>
     <%- include ('partials/navbar.ejs') %>
 
-    <div class="container">
-      <h1 class="mt-3 mb-3 display-4">Log Information</h1>
+    <div class="small-container shadow-lg p-5">
+      <h1 class="mb-3 display-6">Log Information</h1>
 
-      <p class="lead">
-        Here you have the ability to update or delete a log.
-      </p>
+      <p class="lead">Here you have the ability to update or delete a log.</p>
 
       <form id="update-log" action="/log/<%= log._id %>/update" method="POST">
         <div class="mb-3">
           <label for="peakflow" class="form-label">Peak flow score</label>
-          <input type="number" class="form-control" id="peakflow" name="peakflow" value="<%= log.peakflow %>">
+          <input
+            type="number"
+            class="form-control"
+            id="peakflow"
+            name="peakflow"
+            value="<%= log.peakflow %>"
+          />
         </div>
         <div class="mb-3">
           <label for="symptoms" class="form-label">Symptoms</label>
-          <input type="text" class="form-control" id="symptoms" name="symptoms" value="<%= log.symptoms %>">
+          <input
+            type="text"
+            class="form-control"
+            id="symptoms"
+            name="symptoms"
+            value="<%= log.symptoms %>"
+          />
         </div>
         <div class="mb-3">
           <label for="notes" class="form-label">Notes</label>
-          <textarea class="form-control" id="notes" name="notes" style="height: 100px"><%= log.notes %></textarea>
+          <textarea
+            class="form-control"
+            id="notes"
+            name="notes"
+            style="height: 100px"
+          >
+<%= log.notes %></textarea
+          >
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <button type="button" class="btn btn-danger" id="delete-log">Delete</button>
+        <button type="button" class="btn btn-danger mx-2" id="delete-log">
+          Delete
+        </button>
       </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
-      document.getElementById('delete-log').addEventListener('click', async () => {
-        const response = await fetch(`/log/${encodeURIComponent('<%= log._id %>')}/delete`, {
-          method: 'POST',
+      document
+        .getElementById("delete-log")
+        .addEventListener("click", async () => {
+          const response = await fetch(
+            `/log/${encodeURIComponent("<%= log._id %>")}/delete`,
+            {
+              method: "POST",
+            }
+          );
+
+          if (response.ok) {
+            window.location.href = "/dashboard";
+          } else {
+            alert("Error deleting log");
+          }
         });
-
-        if (response.ok) {
-          window.location.href = '/home'; // Redirect to the desired page after successful deletion
-        } else {
-          alert('Error deleting log');
-        }
-      });
     </script>
-
   </body>
 </html>

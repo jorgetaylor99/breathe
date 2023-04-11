@@ -1,43 +1,80 @@
 body {
-  background-color: #F6F6F2;
   padding-top: 70px;
-  padding-bottom: 10px;
-  padding-left: 10%;
-  padding-right: 10%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-.small-body {
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-bottom: 20px;
 }
 
 /* media query for small screens */
 @media (max-width: 640px) {
   body {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
   }
 }
 
+/* custom links ----------- */
 a {
-  color: #00B7FF;
+  color: #6DAFFE;
 }
+
+a:hover {
+  color: #437FC7;
+}
+
+/* custom buttons --------- */
+.btn {
+  border-radius: 50px;
+}
+
+.btn-sm {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #6DAFFE;
+  border-color: #6DAFFE;
+}
+
+.btn-primary:hover {
+  background-color: #437FC7;
+  border-color: #437FC7;
+}
+/* ------------------------ */
 
 .small-container {
+  background-color: #FFFFFF;
+  border-radius: 50px;
   max-width: 600px;
-  margin: 0 auto; /* Center the container horizontally */
+  margin: 0 auto; /* Center horizontally */
 }
 
-.navbar .container-sm {
-  padding: 5px;
-  padding-left: 5%; /* Adjust this value according to your needs */
-  padding-right: 5%; /* Adjust this value according to your needs */
+.card {
+  border: 0px;
+  border-radius: 20px;
+  padding: 0.5rem;
 }
 
-.scroller {
-  max-height: 80vh;
+.color-design {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* custom list item hover - */
+.list-group-item:hover {
+  background-color: #EDF6FF;
+}
+
+.navbar {
+  background-color: #005b8f; 
+}
+
+.scroller-log {
   overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  max-height: 75vh;
+}
+
+.scroller-medication {
+  overflow-y: auto;
+  max-height: 27vh;
 }

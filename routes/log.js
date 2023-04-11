@@ -31,7 +31,7 @@ router.post('/log/:id/update', async (req, res) => {
   );
 
   if (result) {
-    res.redirect('/home');
+    res.redirect('/dashboard');
   } else {
     res.status(404).send('Log not found');
   }
@@ -46,7 +46,7 @@ router.post('/log/:id/delete', async (req, res) => {
   );
 
   if (result) {
-    res.redirect('/home'); // Redirect to the desired page after successful deletion
+    res.redirect('/dashboard');
   } else {
     res.status(404).send('Log not found');
   }

@@ -1,26 +1,44 @@
 <div class="container">
-  <nav class="navbar bg-light fixed-top navbar-expand-md">
+  <nav class="navbar fixed-top navbar-expand-md" data-bs-theme="dark">
     <div class="container-sm">
-      <span class="navbar-brand">Breathe</span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-brand"><i class="bi bi-lungs-fill"></i> Breathe</span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/home">Home</a>
+            <a class="nav-link" href="/dashboard"
+              ><i class="bi bi-house-fill"></i> Dashboard</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/add">
-              <!-- <img src="/images/plus-square.svg" alt="Bootstrap" width="16" height="16"> -->
-              Log
-            </a>
+            <a class="nav-link" href="/peakflow"
+              ><i class="bi bi-file-earmark-plus"></i> Record Log</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/resources">Resources</a>
+            <a class="nav-link" href="/medication"
+              ><i class="bi bi-capsule"></i> Add Medication</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/signout">Sign Out</a>
+            <a class="nav-link" href="/resources"
+              ><i class="bi bi-book"></i> Resources</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signout"
+              ><i class="bi bi-box-arrow-left"></i> Sign Out</a
+            >
           </li>
         </ul>
       </div>

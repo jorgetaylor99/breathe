@@ -25,8 +25,8 @@ router.post("/login", async (req, res) => {
             const token = jwt.sign({ id: user._id, email: user.email }, SECRET);
             // store token in cookie
             res.cookie('authToken', token, { httpOnly: true });
-            // redirect to home page
-            res.redirect('/home');
+            // redirect to dashboard
+            res.redirect('/dashboard');
         } else {
             res.status(400).json({ error: "password doesn't match" });
         }

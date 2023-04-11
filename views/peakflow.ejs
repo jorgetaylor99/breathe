@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('partials/head.ejs') %>
+    <body>
+        <%- include ('partials/navbar.ejs') %>
+
+        <div class="small-container shadow-lg p-5">
+            <h1 class="mb-3 display-6">Record Peak Flow</h1>
+
+            <form action="/peakflow" method="post">
+                <div class="mb-3">
+                    <label for="peakflow" class="form-label"
+                        >Peak flow score</label
+                    >
+                    <input type="number" class="form-control" name="peakflow" />
+                </div>
+                <div class="mb-3">
+                    <label for="symptoms" class="form-label">Symptoms</label>
+                    <input type="text" class="form-control" name="symptoms" />
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes</label>
+                    <textarea
+                        class="form-control"
+                        name="notes"
+                        style="height: 100px"
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
+            </form>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
