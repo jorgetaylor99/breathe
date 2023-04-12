@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -42,9 +42,20 @@ a:hover {
 
 .small-container {
   background-color: #FFFFFF;
-  border-radius: 50px;
+  border-radius: 30px;
+  width: 100%;
   max-width: 600px;
-  margin: 0 auto; /* Center horizontally */
+  /* min-width: 300px; */
+}
+
+.center-container {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .card {

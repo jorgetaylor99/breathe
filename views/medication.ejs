@@ -3,35 +3,37 @@
   <%- include ('partials/head.ejs') %>
   <body>
     <%- include ('partials/navbar.ejs') %>
-    <div class="small-container shadow-lg p-5">
-      <h1 class="mb-3 display-6">Add Medication</h1>
-      <form action="/medication" method="post">
-        <div class="mb-3">
-          <label for="medication" class="form-label">Medication</label>
-          <input type="text" class="form-control" name="medication" />
-        </div>
-        <div class="mb-3">
-          <label for="dosage" class="form-label">Dosage</label>
-          <input type="text" class="form-control" name="dosage" />
-        </div>
-        <div class="mb-3">
-          <label for="frequency" class="form-label">Frequency</label>
-          <input type="text" class="form-control" name="frequency" />
-        </div>
-        <div class="mb-3">
-          <label for="color" class="form-label">Colour Picker</label>
-          <input
-            name="color"
-            type="color"
-            class="form-control form-control-color"
-            value="#6DAFFE"
-          />
-          <div id="colorHelp" class="form-text">
-            Pick a colour which helps to identify your medication!
+    <div class="center-container">
+      <div class="small-container shadow-lg p-5">
+        <h1 class="mb-3 display-6">Add Medication</h1>
+        <form action="/medication" method="post">
+          <div class="mb-3">
+            <label for="medication" class="form-label">Medication</label>
+            <input type="text" class="form-control" name="medication" />
           </div>
-        </div>
-        <button type="submit" class="btn btn-success">Create</button>
-      </form>
+          <div class="mb-3">
+            <label for="dosage" class="form-label">Dosage</label>
+            <input type="text" class="form-control" name="dosage" />
+          </div>
+          <div class="mb-3">
+            <label for="frequency" class="form-label">Frequency</label>
+            <input type="text" class="form-control" name="frequency" />
+          </div>
+          <div class="mb-3">
+            <label for="color" class="form-label">Colour Picker</label>
+            <input
+              name="color"
+              type="color"
+              class="form-control form-control-color"
+              value="#6DAFFE"
+            />
+            <div id="colorHelp" class="form-text">
+              Pick a colour which helps to identify your medication!
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

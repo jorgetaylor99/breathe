@@ -1,0 +1,18 @@
+{
+  "lang": "en-uk",
+  "short_name": "Breathe",
+  "name": "Breathe",
+  "description": "A self-management app for asthma",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/images/lungs-fill.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
