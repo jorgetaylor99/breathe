@@ -7,15 +7,21 @@
     <div class="center-container mt-3">
       <div class="row weather-container">
         <div class="col-lg-12">
-          <div class="card p-5 mb-4 shadow-lg">
+          <div class="card p-4 mb-4 shadow-lg">
             <h4 class="card-title mb-3">Current Weather</h4>
             <div class="row">
               <div class="col-sm-6">
-                <p class="lead opacity-75 mb-3">Sheffield</p>
-                <h1 class="display-1 px-2">
-                  <%= formattedData.current.temperature %>°C
-                </h1>
-                <p><%= formattedData.current.weathercode %></p>
+                <p class="lead card-subtitle opacity-75">Sheffield</p>
+                <div class="d-flex align-items-center">
+                  <img
+                    class="wi-icon"
+                    src="<%= getWeatherIconPath(formattedData.current.weathercode) %>"
+                    alt
+                  />
+                  <h1 class="display-3 px-2">
+                    <%= formattedData.current.temperature %>°C
+                  </h1>
+                </div>
               </div>
               <div class="col-sm-6">
                 <p class="card-text lead">
@@ -38,16 +44,24 @@
             </div>
           </div>
 
-          <div class="card p-5 shadow-lg">
+          <div class="card p-4 shadow-lg">
             <h4 class="card-title mb-4">Extended Forecast</h4>
             <div class="row">
               <% formattedData.daily.forEach((dayData) => { %>
-              <div class="col-md-2 text-align-center">
+              <div
+                class="col-md-2 d-flex flex-column align-items-center text-center"
+              >
                 <h5><%= getDayOfWeek(dayData.date) %></h5>
+                <img
+                  class="wi-icon-small"
+                  src="<%= getWeatherIconPath(dayData.weathercode) %>"
+                  alt
+                />
                 <p>
                   <%= dayData.maxTemp %>° /
                   <span class="opacity-75"><%= dayData.minTemp %>°</span>
                 </p>
+                <!-- <p><%= dayData.weathercode %></p> -->
               </div>
               <% }) %>
             </div>

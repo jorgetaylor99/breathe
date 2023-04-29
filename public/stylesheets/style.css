@@ -89,3 +89,11 @@ a:hover {
   overflow-y: auto;
   max-height: 27vh;
 }
+
+.wi-icon {
+  width: 150px;
+}
+
+.wi-icon-small {
+  width: 100px;
+}

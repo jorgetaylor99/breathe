@@ -6,6 +6,9 @@ const {
   formatWeatherData,
 } = require("../public/javascripts/weather");
 const { getDayOfWeek } = require("../public/javascripts/weekday");
+const {
+  getWeatherIconPath,
+} = require("../public/javascripts/weather-icon-path");
 const router = Router();
 
 router.get("/weather", isLoggedIn, async (req, res) => {
@@ -17,7 +20,7 @@ router.get("/weather", isLoggedIn, async (req, res) => {
   const formattedData = await formatWeatherData(weatherData);
   // console.log(weatherData);
   // console.log(formattedData);
-  res.render("weather", { formattedData, getDayOfWeek });
+  res.render("weather", { formattedData, getDayOfWeek, getWeatherIconPath });
 });
 
 module.exports = router;
