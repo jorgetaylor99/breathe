@@ -4,7 +4,7 @@
   <body>
     <%- include ('partials/navbar.ejs') %>
 
-    <div class="center-container mt-1">
+    <div class="center-container mt-3">
       <div class="small-container shadow-lg p-5">
         <h1 class="mb-3 display-6">Record Log</h1>
 
@@ -23,8 +23,11 @@
               class="form-control"
               name="notes"
               style="height: 100px"
-              placeholder="E.g. exercise/activity level, triggers, sleep quality or emotional well-being"
             ></textarea>
+            <div id="colorHelp" class="form-text">
+              E.g. exercise/activity level, triggers, sleep quality or emotional
+              well-being
+            </div>
           </div>
           <button type="submit" class="btn btn-success">Create</button>
         </form>

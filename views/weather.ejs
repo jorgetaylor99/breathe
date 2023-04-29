@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('partials/head.ejs') %>
+  <body>
+    <%- include ('partials/navbar.ejs') %>
+
+    <div class="center-container mt-3">
+      <div class="row weather-container">
+        <div class="col-lg-12">
+          <div class="card p-5 mb-4 shadow-lg">
+            <h4 class="card-title mb-3">Current Weather</h4>
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="lead opacity-75 mb-3">Sheffield</p>
+                <h1 class="display-1 px-2">
+                  <%= formattedData.current.temperature %>°C
+                </h1>
+                <p><%= formattedData.current.weathercode %></p>
+              </div>
+              <div class="col-sm-6">
+                <p class="card-text lead">
+                  Feels like <%= formattedData.current.apparentTemperature %>°C
+                </p>
+                <p class="card-text">
+                  <i class="bi bi-cloud-drizzle px-2"></i>
+                  Precipitation <%=
+                  formattedData.current.precipitationProbability %>%
+                </p>
+                <p class="card-text">
+                  <i class="bi bi-moisture px-2"></i>
+                  Humidity <%= formattedData.current.humidity %>%
+                </p>
+                <p class="card-text">
+                  <i class="bi bi-wind px-2"></i>
+                  Wind <%= formattedData.current.windspeed %> mph
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-5 shadow-lg">
+            <h4 class="card-title mb-4">Extended Forecast</h4>
+            <div class="row">
+              <% formattedData.daily.forEach((dayData) => { %>
+              <div class="col-md-2 text-align-center">
+                <h5><%= getDayOfWeek(dayData.date) %></h5>
+                <p>
+                  <%= dayData.maxTemp %>° /
+                  <span class="opacity-75"><%= dayData.minTemp %>°</span>
+                </p>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/javascripts/weather.js"></script>
+  </body>
+</html>

@@ -16,6 +16,7 @@ var signoutRouter = require("./routes/signout");
 var logRouter = require("./routes/log");
 var medicationRouter = require("./routes/medication");
 var activeMedicationRouter = require("./routes/active-medication");
+var weatherRouter = require("./routes/weather");
 
 // Create application object
 var app = express();
@@ -45,5 +46,10 @@ app.use("/", signoutRouter);
 app.use("/", logRouter);
 app.use("/", medicationRouter);
 app.use("/", activeMedicationRouter);
+app.use("/", weatherRouter);
+
+app.use(function (req, res, next) {
+  res.status(404).render("404");
+});
 
 module.exports = app;
