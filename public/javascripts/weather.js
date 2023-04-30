@@ -26,6 +26,21 @@ const getWeatherData = async (latitude, longitude) => {
   }
 };
 
+const getAirQualityData = async (latitude, longitude) => {
+  try {
+    const openMeteoUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&hourly=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone`;
+    https: try {
+      const response = await fetch(openMeteoUrl);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(`Error fetching air quality data: ${error}`);
+    }
+  } catch (error) {
+    console.error(`Error getting user's geolocation: ${error}`);
+  }
+};
+
 const findClosestIndex = (timestamps, currentTime) => {
   let closestIndex = 0;
   let closestDifference = Math.abs(
@@ -44,57 +59,30 @@ const findClosestIndex = (timestamps, currentTime) => {
   return closestIndex;
 };
 
-// const formatWeatherData = (weatherData) => {
-//   const { hourly, daily } = weatherData;
-
-//   // Find the index of the closest timestamp to the current time
-//   const currentTime = Math.floor(Date.now() / 1000); // Convert current time to Unix timestamp
-//   const closestIndex = findClosestIndex(hourly.time, currentTime);
-
-//   // Extract current data using the closestIndex
-//   const current = {
-//     currentTemperature: hourly.temperature_2m[closestIndex],
-//     currentHumidity: hourly.relativehumidity_2m[closestIndex],
-//     currentApparentTemperature: hourly.apparent_temperature[closestIndex],
-//     currentPrecipitationProbability:
-//       hourly.precipitation_probability[closestIndex],
-//     currentWeatherCode: hourly.weathercode[closestIndex],
-//     currentWindSpeed: hourly.windspeed_10m[closestIndex],
-//   };
-
-//   // Extract daily data for the next 7 days
-//   const dailyData = daily.time.slice(0, 7).reduce((acc, day, index) => {
-//     acc[`day${index + 1}Date`] = day;
-//     acc[`day${index + 1}WeatherCode`] = daily.weathercode[index];
-//     acc[`day${index + 1}MaxTemp`] = daily.temperature_2m_max[index];
-//     acc[`day${index + 1}MinTemp`] = daily.temperature_2m_min[index];
-//     return acc;
-//   }, {});
-
-//   return {
-//     ...current,
-//     ...dailyData,
-//   };
-// };
-
-const formatWeatherData = (weatherData) => {
+const formatWeatherData = (weatherData, airData) => {
   const { hourly, daily } = weatherData;
 
-  // Find the index of the closest timestamp to the current time
-  const currentTime = Math.floor(Date.now() / 1000); // Convert current time to Unix timestamp
+  const currentTime = Math.floor(Date.now() / 1000);
   const closestIndex = findClosestIndex(hourly.time, currentTime);
 
-  // Extract current data using the closestIndex
   const current = {
+    // weather
     temperature: hourly.temperature_2m[closestIndex],
     humidity: hourly.relativehumidity_2m[closestIndex],
     apparentTemperature: hourly.apparent_temperature[closestIndex],
     precipitationProbability: hourly.precipitation_probability[closestIndex],
     weathercode: hourly.weathercode[closestIndex],
     windspeed: hourly.windspeed_10m[closestIndex],
+
+    // air quality
+    pm10: airData.hourly.pm10[closestIndex],
+    pm2_5: airData.hourly.pm2_5[closestIndex],
+    carbon_monoxide: airData.hourly.carbon_monoxide[closestIndex],
+    nitrogen_dioxide: airData.hourly.nitrogen_dioxide[closestIndex],
+    sulphur_dioxide: airData.hourly.sulphur_dioxide[closestIndex],
+    ozone: airData.hourly.ozone[closestIndex],
   };
 
-  // Extract daily data for the next 6 days (excluding the current day)
   const dailyData = daily.time.slice(1, 7).map((day, index) => ({
     date: day,
     weathercode: daily.weathercode[index + 1],
@@ -111,5 +99,6 @@ const formatWeatherData = (weatherData) => {
 module.exports = {
   getCityFromCoordinates,
   getWeatherData,
+  getAirQualityData,
   formatWeatherData,
 };
