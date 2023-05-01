@@ -4,14 +4,25 @@
   <body>
     <%- include ('partials/navbar.ejs') %>
 
-    <div class="center-container mt-3">
+    <div class="container">
       <div class="row weather-container">
         <div class="col-lg-12">
           <div class="card p-4 mb-4 shadow-lg">
-            <h4 class="card-title mb-3">Current Weather & Air Quality</h4>
+            <div class="d-flex justify-content-between">
+              <h4 class="card-title mb-3">Current Weather & Air Quality</h4>
+              <!-- <button
+                type="button"
+                class="btn btn-primary"
+                id="update-weather-btn"
+              >
+                Use location!
+              </button> -->
+            </div>
             <div class="row">
               <div class="col-lg-5">
-                <p class="lead card-subtitle opacity-75">Sheffield</p>
+                <p class="lead card-subtitle opacity-75">
+                  <%= location.address.city %>
+                </p>
                 <div class="d-flex align-items-center">
                   <img
                     class="wi-icon"
@@ -31,7 +42,7 @@
                   </p>
                 </div>
               </div>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-3">
                 <p class="card-text">
                   Feels like <%= data.current.apparentTemperature %>°C
                 </p>
@@ -48,7 +59,7 @@
                   Wind <%= data.current.windspeed %> mph
                 </p>
               </div>
-              <div class="col-sm-3">
+              <div class="col-sm-3 mt-3">
                 <p class="card-text">
                   Carbon monoxide <%= data.current.carbon_monoxide %>μg/m³
                 </p>

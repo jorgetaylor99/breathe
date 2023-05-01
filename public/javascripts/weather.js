@@ -1,4 +1,4 @@
-const getCityFromCoordinates = async (latitude, longitude) => {
+const getLocationFromCoordinates = async (latitude, longitude) => {
   const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
 
   try {
@@ -97,7 +97,7 @@ const formatWeatherData = (weatherData, airData) => {
 };
 
 module.exports = {
-  getCityFromCoordinates,
+  getLocationFromCoordinates,
   getWeatherData,
   getAirQualityData,
   formatWeatherData,

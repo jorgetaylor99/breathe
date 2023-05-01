@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 body {
-  background-image: linear-gradient(to right, #6DAFFE, #437FC7);
+  background-color: #437FC7;
   font-family: 'Open Sans', sans-serif;
   padding-top: 60px;
   padding-bottom: 10px;
@@ -44,9 +44,6 @@ a:hover {
 }
 
 .center-container {
-  position: absolute;
-  width: 100%;
-  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,6 +56,7 @@ a:hover {
 }
 
 .card {
+  opacity: 0.95;
   border: 0px;
   border-radius: 20px;
   padding: 0.5rem;
@@ -77,7 +75,7 @@ a:hover {
 }
 
 .navbar {
-  background-image: linear-gradient(to right, #6DAFFE, #437FC7);
+  background-color: #437FC7;
 }
 
 .scroller-log {

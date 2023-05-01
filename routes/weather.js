@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { isLoggedIn } = require("../public/javascripts/auth");
 const {
-  getCityFromCoordinates,
+  getLocationFromCoordinates,
   getWeatherData,
   getAirQualityData,
   formatWeatherData,
@@ -13,15 +13,16 @@ const {
 const router = Router();
 
 router.get("/weather", isLoggedIn, async (req, res) => {
-  // const { latitude, longitude } = getUserGeolocation();
-  const latitude = 53.3816738;
-  const longitude = -1.4818567;
-  // const city = await getCityFromCoordinates(latitude, longitude);
+  // default to London
+  const latitude = 53.38297;
+  const longitude = -1.4659;
+
+  const location = await getLocationFromCoordinates(latitude, longitude);
   const weatherData = await getWeatherData(latitude, longitude);
   const airData = await getAirQualityData(latitude, longitude);
   const data = await formatWeatherData(weatherData, airData);
-  console.log(data);
-  res.render("weather", { data, getDayOfWeek, getWeatherIconPath });
+
+  res.render("weather", { data, location, getDayOfWeek, getWeatherIconPath });
 });
 
 module.exports = router;
