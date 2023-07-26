@@ -1,5 +1,7 @@
 # Breathe: Asthma Self-Monitoring Web Application
 
+<img width="1512" alt="breathe" src="https://github.com/jorgetaylor99/breathe/assets/84081119/329d9f31-62b5-4f40-9e50-a38512e0ddda">
+
 ## Overview
 
 Breathe is a web-based application designed to help individuals with asthma monitor their condition. Developed using a tech stack of MongoDB, Mongoose, Node.js, Express.js, Bootstrap, and EJS, it provides an intuitive interface and a wide range of features:
@@ -26,7 +28,7 @@ To install and run Breathe locally, follow the steps below:
     cd breathe
     ```
 
-3. In order to connect to the database, you will need to create a `.env` file in the root of your project and add the following lines:
+3. In order to connect to the database, you will need to create a `.env` file in the root of your project (customise these values to your preference):
 
     ```
     PORT=3000
